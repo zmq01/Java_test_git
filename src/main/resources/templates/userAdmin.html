@@ -1,0 +1,92 @@
+﻿<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+<style>
+  a {
+    display:inline-block;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: red;
+    color: white;
+  }
+</style>
+<script type="text/javascript">
+function doit(flag,id)
+{
+	if(flag=="del")
+	{
+		if(confirm("确认删除吗？")!=true)
+			return;
+	}
+}
+</script>
+</head><body>
+
+
+
+
+<div class="menu">
+
+<table>
+<tbody>
+    <tr>
+        <td>
+            <form method="post" th:action="@{/user/list}">
+                用户名称：<input name="username" class="input-text" type="text">&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="sex">
+                    <option value="">--请选择--</option>
+                    <option value="0">女</option>
+                    <option value="1">男</option>
+                </select>
+                <input value="查 询" type="submit">
+            </form>
+        </td>
+    </tr>
+</tbody></table>
+</div>
+<div class="main">
+
+<div class="optitle clearfix">
+  <em><a th:href="@{/user/toAdd}">新增</a></em>
+		<div class="title">用户管理&gt;&gt;</div>
+	</div>
+	<div class="content">
+<table class="list">
+  <tbody><tr>
+    <td width="8%" height="29"><div class="STYLE1" align="center">编号</div></td>
+    <td width="10%"><div class="STYLE1" align="center">用户名称</div></td>
+    <td width="10%"><div class="STYLE1" align="center">密码</div></td>
+    <td width="8%"><div class="STYLE1" align="center">性别</div></td>
+    <td width="8%"><div class="STYLE1" align="center">年龄</div></td>
+
+    <td width="10%"><div class="STYLE1" align="center">电话 </div></td>
+    <td width="20%"><div class="STYLE1" align="center">地址 </div></td>
+    <td><div class="STYLE1" align="center">操作</div></td>
+  </tr>
+
+  <tr th:each="item,state:${list}">
+    <td th:text="${state.count}"></td>
+    <td th:text="${item.username}"></td>
+    <td th:text="${item.password}"></td>
+    <td th:text="${item.sex=='0'?'女':'男'}"></td>
+    <td th:text="${item.age}"></td>
+    <td th:text="${item.phone}"></td>
+    <td th:text="${item.address}"></td>
+      <td><a th:href="@{/user/toUpdate?id=__${item.id}__}">修改</a>|<a th:href="@{/user/del?id=__${item.id}__}">删除</a></td>
+  </tr>
+
+
+</tbody></table>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+
+<body class="frame-bd">
+<ul class="left-menu">
+    <li><a th:href="@{/bill/list}" target="mainFrame"><img th:src="@{/images/btn_bill.gif}" /></a></li>
+    <li><a th:href="@{/provider/list}" target="mainFrame"><img th:src="@{/images/btn_suppliers.gif}" /></a></li>
+    <li><a th:href="@{/user/list}" target="mainFrame"><img th:src="@{/images/btn_users.gif}" /></a></li>
+    <li><a href="#" onClick="javaScript:window.parent.location.href='/'"><img th:src="@{/images/btn_exit.gif}" /></a></li>
+</ul>
+
+</body>
+
+</html>
